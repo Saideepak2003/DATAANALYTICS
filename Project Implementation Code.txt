@@ -1,0 +1,32 @@
+library(tidyverse)
+library(dplyr)
+# READING THE CSV FILE.
+data<-read.csv(""C:\Users\saiKd\Downloads\Da_project.csv"")
+
+#HISTOGRAM FOR AGE OF RESPONDERS.
+hist(data$AGE,col="red")
+
+#BARPLOT FOR WHICH FOOD DELIVERY SERVICE DO THEY PREFER
+barplot(table(data$Which.food.delivery.service.do.you.prefer.), col="green")
+
+#DENSITY GRAPH FOR WHICH DELIVERY SERVICE DO THEY PREFER
+plot(density(data$Which.food.delivery.service.do.you.prefer.),col = "red")
+
+# MEAN OF RATING OF OFD APP INTERFACE.
+mean(data$How.is.the.OFD.app.user.interface.)
+
+#STANDARD DEVIATION OF RATING OF OFD APP INTERFACE.
+sd(data$How.is.the.OFD.app.user.interface.)
+
+#MEAN OF OVERALL RATING OF OFD SERVICES.
+mean(data$Rate.the.OFD.services.that.you.use)
+
+#STANDARD DEVIATION OF OVERALL RATING OF OFD SERVICES.
+sd(data$Rate.the.OFD.services.that.you.use)
+
+#PLOT FOR AGE VS OVERALL SATISFACTION OF OFD SERVICES USING REGRESSION.
+plot(data$AGE,data$Rate.the.OFD.services.that.you.use)
+a<-lm(data$Rate.the.OFD.services.that.you.use ~ data$AGE)
+
+summary(a)
+predict(a,data)
